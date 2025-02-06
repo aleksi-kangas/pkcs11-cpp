@@ -1,0 +1,57 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 30,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "ninja",
+      "displayName": "Configure with Ninja",
+      "generator": "Ninja",
+      "architecture": {
+        "strategy": "external",
+        "value": "x64"
+      },
+      "vendor": {
+        "jetbrains.com/clion": {
+          "toolchain": "Visual Studio"
+        }
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "ninja",
+      "displayName": "Build with Ninja",
+      "configurePreset": "ninja"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "ninja",
+      "displayName": "Test with Ninja",
+      "configurePreset": "ninja"
+    }
+  ],
+  "workflowPresets": [
+    {
+      "name": "ninja-workflow",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "ninja"
+        },
+        {
+          "type": "build",
+          "name": "ninja"
+        },
+        {
+          "type": "test",
+          "name": "ninja"
+        }
+      ]
+    }
+  ]
+}

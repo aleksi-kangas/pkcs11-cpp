@@ -1,0 +1,42 @@
+name: "Workflow"
+on:
+  push:
+    branches: [ master ]
+    tags:
+      - "v*.*.*"
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: ${{ matrix.os }}-${{ github.workflow }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ windows-latest ]
+        include:
+          - os: windows-latest
+            triplet: x64-windows
+    steps:
+      - name: "Checkout repository"
+        uses: actions/checkout@v3
+
+      - name: "Setup MSVC"
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: "Setup CMake"
+        uses: lukka/get-cmake@latest
+
+      - name: "Run CMake"
+        uses: lukka/run-cmake@v10
+        with:
+          configurePreset: "ninja"
+          buildPreset: "ninja"
+          buildPresetAdditionalArgs: "['--config Release']"
+          testPreset: "ninja"
+          testPresetAdditionalArgs: "['--config Release']"

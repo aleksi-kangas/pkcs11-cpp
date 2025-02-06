@@ -33,13 +33,4 @@ jobs:
         uses: lukka/get-cmake@latest
 
       - name: "Run CMake"
-        uses: lukka/run-cmake@v10
-        env:
-          # Hack to trick run-cmake to skip VCPKG
-          VCPKG_ROOT:
-        with:
-          configurePreset: "ninja"
-          buildPreset: "ninja"
-          buildPresetAdditionalArgs: "['--config Release']"
-          testPreset: "ninja"
-          testPresetAdditionalArgs: "['--config Release']"
+        run: cmake --preset ninja -B build

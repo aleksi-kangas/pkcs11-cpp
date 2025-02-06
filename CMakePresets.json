@@ -10,10 +10,6 @@
       "name": "ninja",
       "displayName": "Configure with Ninja",
       "generator": "Ninja",
-      "architecture": {
-        "strategy": "external",
-        "value": "x64"
-      },
       "vendor": {
         "jetbrains.com/clion": {
           "toolchain": "Visual Studio"

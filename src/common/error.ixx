@@ -17,7 +17,7 @@ module;
 export module pkcs11:error;
 
 namespace pkcs11 {
-    export enum class Error final : std::uint64_t {
+    enum class Error final : std::uint64_t {
         kCancel = CKR_CANCEL,
         kHostMemory = CKR_HOST_MEMORY,
         kSlotIdInvalid = CKR_SLOT_ID_INVALID,
@@ -44,7 +44,7 @@ namespace pkcs11 {
         kDeviceRemoved = CKR_DEVICE_REMOVED,
         kEncryptedDataInvalid = CKR_ENCRYPTED_DATA_INVALID,
         kEncryptedDataLenRange = CKR_ENCRYPTED_DATA_LEN_RANGE,
-        KAeadDecryptFailed = CKR_AEAD_DECRYPT_FAILED,
+        kAeadDecryptFailed = CKR_AEAD_DECRYPT_FAILED,
         kFunctionCanceled = CKR_FUNCTION_CANCELED,
         kFunctionNotParallel = CKR_FUNCTION_NOT_PARALLEL,
 
@@ -63,7 +63,7 @@ namespace pkcs11 {
         kKeyNotWrappable = CKR_KEY_NOT_WRAPPABLE,
         kKeyUnextractable = CKR_KEY_UNEXTRACTABLE,
 
-        KMechanismInvalid = CKR_MECHANISM_INVALID,
+        kMechanismInvalid = CKR_MECHANISM_INVALID,
         kMechanismParamInvalid = CKR_MECHANISM_PARAM_INVALID,
 
         kObjectHandleInvalid = CKR_OBJECT_HANDLE_INVALID,
@@ -192,7 +192,7 @@ std::string pkcs11::ErrorCategory::message(const int condition) const {
         ERROR_TO_STRING(Error::kDeviceRemoved);
         ERROR_TO_STRING(Error::kEncryptedDataInvalid);
         ERROR_TO_STRING(Error::kEncryptedDataLenRange);
-        ERROR_TO_STRING(Error::KAeadDecryptFailed);
+        ERROR_TO_STRING(Error::kAeadDecryptFailed);
         ERROR_TO_STRING(Error::kFunctionCanceled);
         ERROR_TO_STRING(Error::kFunctionNotParallel);
 
@@ -211,7 +211,7 @@ std::string pkcs11::ErrorCategory::message(const int condition) const {
         ERROR_TO_STRING(Error::kKeyNotWrappable);
         ERROR_TO_STRING(Error::kKeyUnextractable);
 
-        ERROR_TO_STRING(Error::KMechanismInvalid);
+        ERROR_TO_STRING(Error::kMechanismInvalid);
         ERROR_TO_STRING(Error::kMechanismParamInvalid);
 
         ERROR_TO_STRING(Error::kObjectHandleInvalid);

@@ -12,18 +12,15 @@ target_sources(${PROJECT_NAME}
         # PKCS#11
         src/pkcs11.ixx
 
-        # Common
-        src/common/common.ixx
-        src/common/error.ixx
-        src/common/exception.ixx
-        src/common/function_list_provider.ixx
-        src/common/user_type.ixx
-        src/common/version.ixx
-
         # Core
         src/core/core.ixx
+        src/core/error.ixx
+        src/core/exception.ixx
         src/core/flags.ixx
+        src/core/functions.ixx
         src/core/info.ixx
+        src/core/user.ixx
+        src/core/version.ixx
 
         # Decrypt
         src/decrypt/decrypt.ixx
@@ -32,25 +29,23 @@ target_sources(${PROJECT_NAME}
         src/encrypt/encrypt.ixx
 
         # Mechanism
-        src/mechanism/mechanism.ixx
-        src/mechanism/mechanism_flags.ixx
-        src/mechanism/mechanism_info.ixx
+        src/mechanism/mechanism.flags.ixx
+        src/mechanism/mechanism.info.ixx
 
         # Session
         src/session/session.ixx
-        src/session/session_flags.ixx
-        src/session/session_info.ixx
-        src/session/session_state.ixx
+        src/session/session.flags.ixx
+        src/session/session.info.ixx
+        src/session/session.state.ixx
 
         # Slot
         src/slot/slot.ixx
-        src/slot/slot_flags.ixx
-        src/slot/slot_info.ixx
+        src/slot/slot.flags.ixx
+        src/slot/slot.info.ixx
 
         # Token
-        src/token/token.ixx
-        src/token/token_flags.ixx
-        src/token/token_info.ixx)
+        src/token/token.flags.ixx
+        src/token/token.info.ixx)
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_23)
 target_compile_options(${PROJECT_NAME} PRIVATE /W4)
 target_include_directories(${PROJECT_NAME} PUBLIC include)

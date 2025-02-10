@@ -8,7 +8,7 @@ module;
 #include <pkcs11/pkcs11.h>
 #pragma pack(pop, cryptoki)
 
-export module pkcs11:function_list_provider;
+export module pkcs11:functions;
 
 namespace pkcs11 {
     export class FunctionListProvider {

@@ -10,7 +10,7 @@ module;
 #include <pkcs11/pkcs11.h>
 #pragma pack(pop, cryptoki)
 
-export module pkcs11:slot_flags;
+export module pkcs11:slot.flags;
 
 namespace pkcs11 {
     export enum SlotFlags final : uint32_t {

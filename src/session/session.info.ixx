@@ -10,10 +10,10 @@ module;
 #include <pkcs11/pkcs11.h>
 #pragma pack(pop, cryptoki)
 
-export module pkcs11:session_info;
+export module pkcs11:session.info;
 
-import :session_flags;
-import :session_state;
+import :session.flags;
+import :session.state;
 
 namespace pkcs11 {
     /**

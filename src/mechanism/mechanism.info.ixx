@@ -10,9 +10,9 @@ module;
 #include <pkcs11/pkcs11.h>
 #pragma pack(pop, cryptoki)
 
-export module pkcs11:mechanism_info;
+export module pkcs11:mechanism.info;
 
-import :mechanism_flags;
+import :mechanism.flags;
 
 namespace pkcs11 {
     export class MechanismInfo final {

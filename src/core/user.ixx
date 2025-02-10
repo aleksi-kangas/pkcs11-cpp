@@ -10,7 +10,7 @@ module;
 #include <pkcs11/pkcs11.h>
 #pragma pack(pop, cryptoki)
 
-export module pkcs11:user_type;
+export module pkcs11:user;
 
 namespace pkcs11 {
     /**

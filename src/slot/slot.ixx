@@ -15,13 +15,12 @@ module;
 
 export module pkcs11:slot;
 
-export import :slot_flags;
-export import :slot_info;
-
-import :common;
 import :error;
-import :mechanism;
+import :exception;
+import :functions;
+import :mechanism.info;
 import :session;
+import :slot.info;
 import :version;
 
 namespace pkcs11 {

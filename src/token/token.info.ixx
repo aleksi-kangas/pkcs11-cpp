@@ -11,9 +11,9 @@ module;
 #include <pkcs11/pkcs11.h>
 #pragma pack(pop, cryptoki)
 
-export module pkcs11:token_info;
+export module pkcs11:token.info;
 
-import :token_flags;
+import :token.flags;
 import :version;
 
 namespace pkcs11 {

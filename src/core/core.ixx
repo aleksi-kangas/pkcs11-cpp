@@ -22,7 +22,8 @@ export module pkcs11:core;
 export import :flags;
 export import :info;
 
-import :common;
+import :error;
+import :exception;
 import :slot;
 
 namespace pkcs11 {

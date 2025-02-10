@@ -10,9 +10,9 @@ module;
 #include <pkcs11/pkcs11.h>
 #pragma pack(pop, cryptoki)
 
-export module pkcs11:slot_info;
+export module pkcs11:slot.info;
 
-import :slot_flags;
+import :slot.flags;
 import :version;
 
 namespace pkcs11 {

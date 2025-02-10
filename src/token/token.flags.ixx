@@ -10,7 +10,7 @@ module;
 #include <pkcs11/pkcs11.h>
 #pragma pack(pop, cryptoki)
 
-export module pkcs11:token_flags;
+export module pkcs11:token.flags;
 
 namespace pkcs11 {
     export enum TokenFlags final : std::uint32_t {

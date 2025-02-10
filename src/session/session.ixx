@@ -15,13 +15,12 @@ module;
 
 export module pkcs11:session;
 
-export import :session_flags;
-export import :session_info;
-export import :session_state;
-
-import :common;
 import :error;
-import :mechanism;
+import :exception;
+import :functions;
+import :mechanism.info;
+import :session.info;
+import :user;
 
 namespace pkcs11 {
     /**

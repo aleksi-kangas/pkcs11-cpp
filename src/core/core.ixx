@@ -3,11 +3,19 @@ module;
 #include <algorithm>
 #include <expected>
 #include <filesystem>
+#include <format>
 #include <iostream>
 #include <ranges>
 #include <vector>
 
+
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+#define WINDOWS
+#define WIN32_LEAN_AND_MEAN
 #include <windows.h>
+#else
+#include <dlfcn.h>
+#endif
 
 #pragma pack(push, cryptoki, 1)
 #define CK_PTR *
@@ -78,17 +86,40 @@ namespace pkcs11 {
 
 
     Pkcs11::Pkcs11(const std::filesystem::path& library_path) {
+#if defined(WINDOWS)
         library_ = LoadLibraryW(library_path.c_str());
-        if (library_ == nullptr) {
-            throw std::runtime_error("Failed to load PKCS11 libray");
-        }
+        if (library_ == nullptr)
+            throw std::runtime_error{
+                std::format("Failed to load PKCS11 library: {}",
+                            std::system_category().message(GetLastError()))
+            };
         const auto f = reinterpret_cast<CK_C_GetFunctionList>(GetProcAddress(library_, "C_GetFunctionList"));
+        if (f == nullptr)
+            throw std::runtime_error{
+                std::format("Failed to get address of C_GetFunctionList:{}",
+                            std::system_category().message(GetLastError()))
+            };
+#else
+        library_ = dlopen(library_path.c_str(), RTLD_NOW);
+        if (library_ == nullptr) {
+            const char* error = dlerror();
+            throw std::runtime_error(std::format("Failed to load PKCS11 library: {}",
+                                                 std::string{error != nullptr ? error : ""}));
+        }
+        const auto f = reinterpret_cast<CK_C_GetFunctionList>(dlsym(library_, "C_GetFunctionList"));
         if (f == nullptr) {
-            throw std::runtime_error("Failed to get address of C_GetFunctionList");
+            const char* error = dlerror();
+            throw std::runtime_error{
+                std::format("Failed to get address of C_GetFunctionList:{}",
+                            std::string{error != nullptr ? error : ""})
+                std::format("Failed to load PKCS11 library: {}",
+
+
+            };
         }
-        if (const CK_RV result = f(&f_); result != CKR_OK) {
+#endif
+        if (const CK_RV result = f(&f_); result != CKR_OK)
             throw Pkcs11Exception{static_cast<Error>(result)};
-        }
         Initialize();
     }
 
@@ -96,7 +127,11 @@ namespace pkcs11 {
         if (library_ != nullptr) {
             try {
                 Finalize();
+#if defined(WINDOWS)
                 FreeLibrary(library_);
+#else
+                dlclose(library_);
+#endif
             } catch (const Pkcs11Exception& e) {
                 std::cerr << e.what() << std::endl;
             }

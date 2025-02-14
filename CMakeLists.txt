@@ -47,7 +47,10 @@ target_sources(${PROJECT_NAME}
         src/token/token.flags.ixx
         src/token/token.info.ixx)
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_23)
-target_compile_options(${PROJECT_NAME} PRIVATE /W4)
+target_compile_options(${PROJECT_NAME} PRIVATE
+        $<$<CXX_COMPILER_ID:MSVC>:/W3>
+        $<$<CXX_COMPILER_ID:Clang>:-Wall>
+        $<$<CXX_COMPILER_ID:GNU>:-Wall>)
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 
 add_subdirectory(test)

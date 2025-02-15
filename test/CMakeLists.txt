@@ -17,7 +17,10 @@ add_executable(${PROJECT_NAME}
 
         token/token_flags_test.cpp)
 target_link_libraries(${PROJECT_NAME} PRIVATE pkcs11 gtest gmock gtest_main)
-target_compile_options(${PROJECT_NAME} PRIVATE /W4)
+target_compile_options(${PROJECT_NAME} PRIVATE
+        $<$<CXX_COMPILER_ID:MSVC>:/W3>
+        $<$<CXX_COMPILER_ID:Clang>:-Wall>
+        $<$<CXX_COMPILER_ID:GNU>:-Wall>)
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_23)
 
 gtest_discover_tests(${PROJECT_NAME})

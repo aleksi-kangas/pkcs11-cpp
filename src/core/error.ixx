@@ -4,13 +4,7 @@ module;
 #include <system_error>
 #include <type_traits>
 
-#pragma pack(push, cryptoki, 1)
-#define CK_PTR *
-#define CK_DECLARE_FUNCTION(returnType, name) returnType __declspec(dllimport) name
-#define CK_DECLARE_FUNCTION_POINTER(returnType, name) returnType __declspec(dllimport) (* name)
-#define CK_CALLBACK_FUNCTION(returnType, name) returnType (* name)
-#include <pkcs11/pkcs11.h>
-#pragma pack(pop, cryptoki)
+#include <core/core.h>
 
 #define ERROR_TO_STRING(e) case e: return #e
 

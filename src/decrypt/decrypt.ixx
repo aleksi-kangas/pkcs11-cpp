@@ -3,13 +3,7 @@ module;
 #include <expected>
 #include <vector>
 
-#pragma pack(push, cryptoki, 1)
-#define CK_PTR *
-#define CK_DECLARE_FUNCTION(returnType, name) returnType __declspec(dllimport) name
-#define CK_DECLARE_FUNCTION_POINTER(returnType, name) returnType __declspec(dllimport) (* name)
-#define CK_CALLBACK_FUNCTION(returnType, name) returnType (* name)
-#include <pkcs11/pkcs11.h>
-#pragma pack(pop, cryptoki)
+#include <core/core.h>
 
 export module pkcs11:decrypt;
 

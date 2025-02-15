@@ -7,47 +7,105 @@
   },
   "configurePresets": [
     {
-      "name": "ninja",
-      "displayName": "Configure with Ninja",
+      "name": "ninja-common",
+      "hidden": true,
       "generator": "Ninja",
+      "binaryDir": "build/${presetName}"
+    },
+    {
+      "name": "ninja-common-windows",
+      "hidden": true,
+      "inherits": "ninja-common",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "cl",
+        "CMAKE_CXX_COMPILER": "cl"
+      },
       "vendor": {
         "jetbrains.com/clion": {
           "toolchain": "Visual Studio"
         }
       }
+    },
+    {
+      "name": "ninja-common-linux",
+      "hidden": true,
+      "inherits": "ninja-common",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "clang-cl",
+        "CMAKE_CXX_COMPILER": "clang-cl"
+      }
+    },
+    {
+      "name": "debug-windows",
+      "displayName": "Debug (Windows)",
+      "inherits": "ninja-common-windows",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "debug-linux",
+      "displayName": "Debug (Linux)",
+      "inherits": "ninja-common-linux",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "release-windows",
+      "displayName": "Release (Windows)",
+      "inherits": "ninja-common-windows",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "release-linux",
+      "displayName": "Release (Linux)",
+      "inherits": "ninja-common-linux",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
     }
   ],
   "buildPresets": [
     {
-      "name": "ninja",
-      "displayName": "Build with Ninja",
-      "configurePreset": "ninja"
+      "name": "debug-windows",
+      "displayName": "Debug (Windows)",
+      "configurePreset": "debug-windows"
+    },
+    {
+      "name": "debug-linux",
+      "displayName": "Debug (Linux)",
+      "configurePreset": "debug-linux"
+    },
+    {
+      "name": "release-windows",
+      "displayName": "Release (Windows)",
+      "configurePreset": "release-windows"
+    },
+    {
+      "name": "release-linux",
+      "displayName": "Release (Linux)",
+      "configurePreset": "release-linux"
     }
   ],
   "testPresets": [
     {
-      "name": "ninja",
-      "displayName": "Test with Ninja",
-      "configurePreset": "ninja"
-    }
-  ],
-  "workflowPresets": [
+      "name": "test-windows",
+      "displayName": "Tests (Windows)",
+      "configurePreset": "debug-windows",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
     {
-      "name": "ninja-workflow",
-      "steps": [
-        {
-          "type": "configure",
-          "name": "ninja"
-        },
-        {
-          "type": "build",
-          "name": "ninja"
-        },
-        {
-          "type": "test",
-          "name": "ninja"
-        }
-      ]
+      "name": "test-linux",
+      "displayName": "Tests (Linux)",
+      "configurePreset": "debug-linux",
+      "output": {
+        "outputOnFailure": true
+      }
     }
   ]
 }

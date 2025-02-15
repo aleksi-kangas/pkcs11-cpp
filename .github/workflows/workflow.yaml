@@ -13,21 +13,15 @@ permissions:
 
 jobs:
   build:
-    name: ${{ matrix.os }}-${{ github.workflow }}
+    name: ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ windows-latest ]
-        include:
-          - os: windows-latest
-            triplet: x64-windows
+        os: [ windows-latest, ubuntu-latest ]
     steps:
       - name: "Checkout repository"
         uses: actions/checkout@v3
-
-      - name: "Setup MSVC"
-        uses: ilammy/msvc-dev-cmd@v1
 
       - name: "Setup CMake"
         uses: lukka/get-cmake@latest

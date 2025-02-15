@@ -17,7 +17,7 @@ TEST(TokenFlags, Mapping) {
               CKF_WRITE_PROTECTED);
     EXPECT_EQ(static_cast<CK_FLAGS>(pkcs11::TokenFlags::kLoginRequired),
               CKF_LOGIN_REQUIRED);
-    EXPECT_EQ(static_cast<CK_FLAGS>(pkcs11::TokenFlags:: kUserPinInitialized),
+    EXPECT_EQ(static_cast<CK_FLAGS>(pkcs11::TokenFlags::kUserPinInitialized),
               CKF_USER_PIN_INITIALIZED);
     EXPECT_EQ(static_cast<CK_FLAGS>(pkcs11::TokenFlags::kRestoreKeyNotNeeded),
               CKF_RESTORE_KEY_NOT_NEEDED);

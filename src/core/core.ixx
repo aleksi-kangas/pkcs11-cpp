@@ -88,17 +88,15 @@ namespace pkcs11 {
     Pkcs11::Pkcs11(const std::filesystem::path& library_path) {
 #if defined(WINDOWS)
         library_ = LoadLibraryW(library_path.c_str());
-        if (library_ == nullptr)
-            throw std::runtime_error{
-                std::format("Failed to load PKCS11 library: {}",
-                            std::system_category().message(GetLastError()))
-            };
+        if (library_ == nullptr) {
+            throw std::runtime_error(std::format("Failed to load PKCS11 library: {}",
+                                                 std::system_category().message(GetLastError())));
+        }
         const auto f = reinterpret_cast<CK_C_GetFunctionList>(GetProcAddress(library_, "C_GetFunctionList"));
-        if (f == nullptr)
-            throw std::runtime_error{
-                std::format("Failed to get address of C_GetFunctionList:{}",
-                            std::system_category().message(GetLastError()))
-            };
+        if (f == nullptr) {
+            throw std::runtime_error(std::format("Failed to get address of C_GetFunctionList:{}",
+                                                 std::system_category().message(GetLastError())));
+        }
 #else
         library_ = dlopen(library_path.c_str(), RTLD_NOW);
         if (library_ == nullptr) {
@@ -109,17 +107,13 @@ namespace pkcs11 {
         const auto f = reinterpret_cast<CK_C_GetFunctionList>(dlsym(library_, "C_GetFunctionList"));
         if (f == nullptr) {
             const char* error = dlerror();
-            throw std::runtime_error{
-                std::format("Failed to get address of C_GetFunctionList:{}",
-                            std::string{error != nullptr ? error : ""})
-                std::format("Failed to load PKCS11 library: {}",
-
-
-            };
+            throw std::runtime_error(std::format("Failed to get address of C_GetFunctionList:{}",
+                                                 std::string{error != nullptr ? error : ""}));
         }
 #endif
-        if (const CK_RV result = f(&f_); result != CKR_OK)
+        if (const CK_RV result = f(&f_); result != CKR_OK) {
             throw Pkcs11Exception{static_cast<Error>(result)};
+        }
         Initialize();
     }
 

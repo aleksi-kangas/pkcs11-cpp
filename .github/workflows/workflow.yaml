@@ -26,8 +26,18 @@ jobs:
       - name: "Setup CMake"
         uses: lukka/get-cmake@latest
 
-      - name: "Run CMake"
-        run: cmake --preset ninja -B build
+      - name: "Run CMake (Windows)"
+        if: ${{ matrix.os == 'windows-latest' }}
+        run: cmake --preset release-windows
 
-      - name: "Build"
-        run: cmake --build build
+      - name: "Build (Windows)"
+        if: ${{ matrix.os == 'windows-latest' }}
+        run: cmake --build build/release-windows
+
+      - name: "Run CMake (Linux)"
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: cmake --preset release-linux
+
+      - name: "Build (Linux)"
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: cmake --build build/release-linux

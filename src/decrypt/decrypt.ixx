@@ -19,7 +19,7 @@ namespace pkcs11 {
      * @param encrypted_data encrypted data to ecrypt
      * @return decrypted data, or error code
      */
-    [[nodiscard]] std::expected<std::vector<unsigned char>, std::error_code> Decrypt(
+    export [[nodiscard]] std::expected<std::vector<unsigned char>, std::error_code> Decrypt(
         const Session& session,
         CK_MECHANISM_PTR mechanism,
         CK_OBJECT_HANDLE decryption_key,

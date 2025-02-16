@@ -11,7 +11,7 @@ module;
 export module pkcs11:core.error;
 
 namespace pkcs11 {
-    export enum class Error final : std::uint64_t {
+    export enum class Error : std::uint64_t {
         kCancel = CKR_CANCEL,
         kHostMemory = CKR_HOST_MEMORY,
         kSlotIdInvalid = CKR_SLOT_ID_INVALID,

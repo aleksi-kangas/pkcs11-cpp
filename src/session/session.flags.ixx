@@ -12,7 +12,7 @@ namespace pkcs11 {
     /**
      * Session type flags
      */
-    export enum class SessionFlags final : std::uint32_t {
+    export enum class SessionFlags : std::uint32_t {
         kEmpty = 0,
         /**
          * If the session is read/write, otherwise read-only

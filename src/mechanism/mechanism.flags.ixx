@@ -9,7 +9,7 @@ export module pkcs11:mechanism.flags;
 import :core.bitmask;
 
 namespace pkcs11 {
-    export enum class MechanismFlags final : std::uint32_t {
+    export enum class MechanismFlags : std::uint32_t {
         /**
          * If the mechanism is performed by the device, otherwise the mechanism is performed in software.
          */

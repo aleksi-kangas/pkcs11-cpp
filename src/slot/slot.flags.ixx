@@ -9,7 +9,7 @@ export module pkcs11:slot.flags;
 import :core.bitmask;
 
 namespace pkcs11 {
-    export enum SlotFlags final : uint32_t {
+    export enum SlotFlags : uint32_t {
         kNone = 0,
         /**
          * A token is present in the slot

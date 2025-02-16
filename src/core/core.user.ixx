@@ -10,7 +10,7 @@ namespace pkcs11 {
     /**
      * Types of Cryptoki users
      */
-    export enum class UserType final : std::uint32_t {
+    export enum class UserType : std::uint32_t {
         kSecurityOfficer = CKU_SO,
         kUser = CKU_USER,
         kContextSpecific = CKU_CONTEXT_SPECIFIC,

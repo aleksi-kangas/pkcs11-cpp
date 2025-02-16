@@ -9,7 +9,7 @@ export module pkcs11:token.flags;
 import :core.bitmask;
 
 namespace pkcs11 {
-    export enum TokenFlags final : std::uint32_t {
+    export enum TokenFlags : std::uint32_t {
         /**
          * If the token has its own random number generator.
          */

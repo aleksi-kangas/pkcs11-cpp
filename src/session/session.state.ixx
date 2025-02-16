@@ -22,7 +22,7 @@ namespace pkcs11 {
      * | Private Token Object   |            |            | R/O      | R/W      |        |
      * |------------------------|------------|------------|----------|----------|--------|
      */
-    export enum class SessionState final : std::uint32_t {
+    export enum class SessionState : std::uint32_t {
         /**
          * The application has opened a read-only session.
          * The application has read-only access to public token objects and read/write access to public session objects.

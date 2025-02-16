@@ -6,7 +6,7 @@ module;
 
 export module pkcs11:mechanism.flags;
 
-import :bitmask;
+import :core.bitmask;
 
 namespace pkcs11 {
     export enum class MechanismFlags final : std::uint32_t {

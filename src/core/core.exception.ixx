@@ -2,9 +2,9 @@ module;
 
 #include <stdexcept>
 
-export module pkcs11:exception;
+export module pkcs11:core.exception;
 
-import :error;
+import :core.error;
 
 namespace pkcs11 {
     export struct Pkcs11Exception final : std::exception {

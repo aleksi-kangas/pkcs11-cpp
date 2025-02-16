@@ -2,9 +2,9 @@ module;
 
 #include <cstdint>
 
-export module pkcs11:flags;
+export module pkcs11:core.flags;
 
-import :bitmask;
+import :core.bitmask;
 
 namespace pkcs11 {
     /**

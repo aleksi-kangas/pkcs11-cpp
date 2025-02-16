@@ -8,10 +8,10 @@ module;
 
 #define ERROR_TO_STRING(e) case e: return #e
 
-export module pkcs11:error;
+export module pkcs11:core.error;
 
 namespace pkcs11 {
-    enum class Error final : std::uint64_t {
+    export enum class Error final : std::uint64_t {
         kCancel = CKR_CANCEL,
         kHostMemory = CKR_HOST_MEMORY,
         kSlotIdInvalid = CKR_SLOT_ID_INVALID,

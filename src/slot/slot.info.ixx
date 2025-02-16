@@ -6,8 +6,8 @@ module;
 
 export module pkcs11:slot.info;
 
+import :core.version;
 import :slot.flags;
-import :version;
 
 namespace pkcs11 {
     /**

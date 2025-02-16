@@ -3,13 +3,13 @@ module;
 #include <type_traits>
 #include <utility>
 
-export module pkcs11:bitmask;
+export module pkcs11:core.bitmask;
 
 namespace pkcs11 {
     /**
      * Enables to opt in an enum for bitwise OR <code>|</code> -operator, allowing the enum to be used as a bitmask.
      */
-    template<typename T>
+    export template<typename T>
         requires(std::is_enum_v<T> and requires(T e)
         {
             enable_bitmask_operator_or(e);

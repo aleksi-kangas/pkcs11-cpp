@@ -6,7 +6,7 @@ module;
 
 export module pkcs11:token.flags;
 
-import :bitmask;
+import :core.bitmask;
 
 namespace pkcs11 {
     export enum TokenFlags final : std::uint32_t {

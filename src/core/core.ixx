@@ -12,11 +12,9 @@ module;
 
 export module pkcs11:core;
 
-export import :flags;
-export import :info;
-
-import :error;
-import :exception;
+import :core.error;
+import :core.exception;
+import :core.info;
 import :slot;
 
 namespace pkcs11 {

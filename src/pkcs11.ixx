@@ -2,13 +2,14 @@ export module pkcs11;
 
 // Core
 export import :core;
-export import :error;
-export import :exception;
-export import :flags;
-export import :functions;
-export import :info;
-export import :user;
-export import :version;
+export import :core.bitmask;
+export import :core.error;
+export import :core.exception;
+export import :core.flags;
+export import :core.functions;
+export import :core.info;
+export import :core.user;
+export import :core.version;
 
 // Decrypt
 export import :decrypt;

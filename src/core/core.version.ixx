@@ -7,7 +7,7 @@ module;
 
 #include <core/core.h>
 
-export module pkcs11:version;
+export module pkcs11:core.version;
 
 namespace pkcs11 {
     /**

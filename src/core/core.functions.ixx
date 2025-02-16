@@ -2,7 +2,7 @@ module;
 
 #include <core/core.h>
 
-export module pkcs11:functions;
+export module pkcs11:core.functions;
 
 namespace pkcs11 {
     export class FunctionListProvider {

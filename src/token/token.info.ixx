@@ -7,8 +7,8 @@ module;
 
 export module pkcs11:token.info;
 
+import :core.version;
 import :token.flags;
-import :version;
 
 namespace pkcs11 {
     /**

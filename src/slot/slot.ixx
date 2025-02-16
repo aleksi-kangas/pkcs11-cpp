@@ -9,13 +9,13 @@ module;
 
 export module pkcs11:slot;
 
-import :error;
-import :exception;
-import :functions;
+import :core.error;
+import :core.exception;
+import :core.functions;
+import :core.version;
 import :mechanism.info;
 import :session;
 import :slot.info;
-import :version;
 
 namespace pkcs11 {
     /**

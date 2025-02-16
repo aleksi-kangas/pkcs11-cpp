@@ -4,10 +4,10 @@ module;
 
 #include <core/core.h>
 
-export module pkcs11:info;
+export module pkcs11:core.info;
 
-import :flags;
-import :version;
+import :core.flags;
+import :core.version;
 
 namespace pkcs11 {
     /**

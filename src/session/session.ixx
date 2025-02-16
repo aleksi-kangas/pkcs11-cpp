@@ -9,12 +9,12 @@ module;
 
 export module pkcs11:session;
 
-import :error;
-import :exception;
-import :functions;
+import :core.error;
+import :core.exception;
+import :core.functions;
+import :core.user;
 import :mechanism.info;
 import :session.info;
-import :user;
 
 namespace pkcs11 {
     /**

@@ -4,7 +4,7 @@ module;
 
 #include <core/core.h>
 
-export module pkcs11:user;
+export module pkcs11:core.user;
 
 namespace pkcs11 {
     /**

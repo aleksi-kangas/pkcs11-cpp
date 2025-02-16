@@ -13,15 +13,15 @@ target_sources(${PROJECT_NAME}
         src/pkcs11.ixx
 
         # Core
-        src/core/bitmask.ixx
         src/core/core.ixx
-        src/core/error.ixx
-        src/core/exception.ixx
-        src/core/flags.ixx
-        src/core/functions.ixx
-        src/core/info.ixx
-        src/core/user.ixx
-        src/core/version.ixx
+        src/core/core.bitmask.ixx
+        src/core/core.error.ixx
+        src/core/core.exception.ixx
+        src/core/core.flags.ixx
+        src/core/core.functions.ixx
+        src/core/core.info.ixx
+        src/core/core.user.ixx
+        src/core/core.version.ixx
 
         # Decrypt
         src/decrypt/decrypt.ixx

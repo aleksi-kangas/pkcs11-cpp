@@ -6,7 +6,7 @@ module;
 
 export module pkcs11:session.flags;
 
-import :bitmask;
+import :core.bitmask;
 
 namespace pkcs11 {
     /**

@@ -6,7 +6,7 @@ module;
 
 export module pkcs11:slot.flags;
 
-import :bitmask;
+import :core.bitmask;
 
 namespace pkcs11 {
     export enum SlotFlags final : uint32_t {

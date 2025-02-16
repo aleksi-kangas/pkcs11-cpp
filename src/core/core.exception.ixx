@@ -1,6 +1,7 @@
 module;
 
 #include <stdexcept>
+#include <system_error>
 
 export module pkcs11:core.exception;
 

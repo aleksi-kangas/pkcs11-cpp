@@ -46,7 +46,11 @@ target_sources(${PROJECT_NAME}
 
         # Token
         src/token/token.flags.ixx
-        src/token/token.info.ixx)
+        src/token/token.info.ixx
+
+        # Verify
+        src/verify/verify.ixx
+)
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_23)
 target_compile_options(${PROJECT_NAME} PRIVATE
         $<$<CXX_COMPILER_ID:MSVC>:/W3>

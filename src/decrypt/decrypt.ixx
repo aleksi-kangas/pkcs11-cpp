@@ -1,6 +1,7 @@
 module;
 
 #include <expected>
+#include <system_error>
 #include <vector>
 
 #include <core/core.h>

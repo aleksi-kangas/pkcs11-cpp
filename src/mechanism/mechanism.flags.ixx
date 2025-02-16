@@ -6,6 +6,8 @@ module;
 
 export module pkcs11:mechanism.flags;
 
+import :bitmask;
+
 namespace pkcs11 {
     export enum class MechanismFlags final : std::uint32_t {
         /**
@@ -92,4 +94,6 @@ namespace pkcs11 {
          */
         kExtension = CKF_EXTENSION,
     };
+
+    consteval bool enable_bitmask_operator_or(MechanismFlags);
 } // namespace pkcs11

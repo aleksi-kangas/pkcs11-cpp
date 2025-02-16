@@ -6,6 +6,8 @@ module;
 
 export module pkcs11:token.flags;
 
+import :bitmask;
+
 namespace pkcs11 {
     export enum TokenFlags final : std::uint32_t {
         /**
@@ -87,4 +89,6 @@ namespace pkcs11 {
          */
         kErrorState = CKF_ERROR_STATE,
     };
+
+    consteval bool enable_bitmask_operator_or(TokenFlags);
 } // namespace pkcs11

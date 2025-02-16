@@ -13,6 +13,7 @@ target_sources(${PROJECT_NAME}
         src/pkcs11.ixx
 
         # Core
+        src/core/bitmask.ixx
         src/core/core.ixx
         src/core/error.ixx
         src/core/exception.ixx

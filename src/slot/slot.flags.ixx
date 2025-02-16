@@ -6,6 +6,8 @@ module;
 
 export module pkcs11:slot.flags;
 
+import :bitmask;
+
 namespace pkcs11 {
     export enum SlotFlags final : uint32_t {
         kNone = 0,
@@ -22,4 +24,6 @@ namespace pkcs11 {
          */
         kHwSlot = CKF_HW_SLOT,
     };
+
+    consteval bool enable_bitmask_operator_or(SlotFlags);
 } // namespace pkcs11

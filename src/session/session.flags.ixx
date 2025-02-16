@@ -6,6 +6,8 @@ module;
 
 export module pkcs11:session.flags;
 
+import :bitmask;
+
 namespace pkcs11 {
     /**
      * Session type flags
@@ -21,4 +23,6 @@ namespace pkcs11 {
          */
         kSerialSession = CKF_SERIAL_SESSION,
     };
+
+    consteval bool enable_bitmask_operator_or(SessionFlags);
 } // namespace pkcs11

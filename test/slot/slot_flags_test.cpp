@@ -1,17 +1,25 @@
+#include <utility>
+
 #include <gtest/gtest.h>
 
-#pragma pack(push, cryptoki, 1)
-#define CK_PTR *
-#define CK_DECLARE_FUNCTION(returnType, name) returnType __declspec(dllimport) name
-#define CK_DECLARE_FUNCTION_POINTER(returnType, name) returnType __declspec(dllimport) (* name)
-#define CK_CALLBACK_FUNCTION(returnType, name) returnType (* name)
-#include <pkcs11/pkcs11.h>
-#pragma pack(pop, cryptoki)
+#include <core/core.h>
 
 import pkcs11;
 
 TEST(SlotFlags, Mapping) {
-    EXPECT_EQ(static_cast<CK_FLAGS>(pkcs11::SlotFlags::kTokenPresent), CKF_TOKEN_PRESENT);
-    EXPECT_EQ(static_cast<CK_FLAGS>(pkcs11::SlotFlags::kRemovableDevice), CKF_REMOVABLE_DEVICE);
-    EXPECT_EQ(static_cast<CK_FLAGS>(pkcs11::SlotFlags::kHwSlot), CKF_HW_SLOT);
+    EXPECT_EQ(std::to_underlying(pkcs11::SlotFlags::kTokenPresent), CKF_TOKEN_PRESENT);
+    EXPECT_EQ(std::to_underlying(pkcs11::SlotFlags::kRemovableDevice), CKF_REMOVABLE_DEVICE);
+    EXPECT_EQ(std::to_underlying(pkcs11::SlotFlags::kHwSlot), CKF_HW_SLOT);
+}
+
+TEST(SlotFlags, FromUnderlying) {
+    constexpr int flags = CKF_TOKEN_PRESENT | CKF_REMOVABLE_DEVICE;
+    EXPECT_EQ(static_cast<pkcs11::SlotFlags>(flags),
+              pkcs11::SlotFlags::kTokenPresent | pkcs11::SlotFlags::kRemovableDevice);
+}
+
+TEST(SlotFlags, ToUnderlying) {
+    constexpr auto slot_flags = pkcs11::SlotFlags::kTokenPresent | pkcs11::SlotFlags::kRemovableDevice;
+    EXPECT_EQ(static_cast<CK_FLAGS>(slot_flags),
+              CKF_TOKEN_PRESENT | CKF_REMOVABLE_DEVICE);
 }

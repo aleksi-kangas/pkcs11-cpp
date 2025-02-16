@@ -1,5 +1,6 @@
 module;
 
+#include <format>
 #include <stdexcept>
 #include <system_error>
 
@@ -11,22 +12,26 @@ namespace pkcs11 {
     export struct Pkcs11Exception final : std::exception {
         explicit Pkcs11Exception(Error error);
 
-        [[nodiscard]] const char* what() const override;
+        [[nodiscard]] const char* what() const noexcept override;
 
         [[nodiscard]] std::error_code ErrorCode() const;
 
     private:
-        const Error error_;
+        Error error_;
+        std::error_code error_code_;
+        std::string error_string_;
     };
 
-    Pkcs11Exception::Pkcs11Exception(const Error error) : error_{error} {
+    Pkcs11Exception::Pkcs11Exception(const Error error) : error_{error},
+                                                          error_code_{std::make_error_code(error)},
+                                                          error_string_{error_code_.message()} {
     }
 
-    const char* Pkcs11Exception::what() const {
-        return ErrorCode().message().c_str();
+    const char* Pkcs11Exception::what() const noexcept {
+        return error_string_.c_str();
     }
 
     std::error_code Pkcs11Exception::ErrorCode() const {
-        return std::make_error_code(error_);
+        return error_code_;
     }
 } // namespace pkcs11

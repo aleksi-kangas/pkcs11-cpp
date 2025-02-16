@@ -143,7 +143,7 @@ namespace pkcs11 {
         [[nodiscard]] std::string message(int condition) const override;
     };
 
-    export constexpr ErrorCategory error_category{};
+    export const ErrorCategory error_category{};
 } // namespace pkcs11
 
 namespace std {
